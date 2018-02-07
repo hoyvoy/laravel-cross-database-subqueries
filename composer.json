@@ -1,0 +1,34 @@
+{
+    "name": "hoyvoy/laravel-cross-database-subqueries",
+    "description": "Eloquent cross database compatibility in subqueries",
+    "type": "library",
+    "require": {
+        "php": ">=7.0.0",
+        "illuminate/support": "^5.5",
+        "illuminate/container": "^5.5",
+        "illuminate/database": "^5.5",
+        "illuminate/events": "^5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0",
+        "orchestra/testbench": "3.5.x",
+        "codacy/coverage": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hoyvoy\\CrossDatabase\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hoyvoy\\Tests\\" : "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hoyvoy\\CrossDatabase\\CrossDatabaseServiceProvider"
+            ]
+        }
+    }
+}
