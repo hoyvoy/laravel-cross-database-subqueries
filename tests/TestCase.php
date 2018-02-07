@@ -111,7 +111,7 @@ class TestCase extends BaseTestCase
                 'driver'    => 'sqlite',
                 'database'  => __DIR__.'/database/sqlite2.sqlite',
                 'prefix'    => '',
-            ]
+            ],
         ]);
     }
 }

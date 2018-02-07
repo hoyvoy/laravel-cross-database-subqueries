@@ -12,7 +12,7 @@ class SqlServerGrammar extends IlluminateSqlServerGrammar
      *
      * @param \Illuminate\Database\Query\Builder $query
      * @param string                             $table
-     * 
+     *
      * @return string
      */
     protected function compileFrom(Builder $query, $table)

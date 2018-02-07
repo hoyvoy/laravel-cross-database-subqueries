@@ -2,7 +2,6 @@
 
 namespace Hoyvoy\CrossDatabase\Eloquent\Concerns;
 
-use Closure;
 use Hoyvoy\CrossDatabase\CanCrossDatabaseShazaamInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\Relation;
