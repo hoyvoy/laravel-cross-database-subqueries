@@ -9,7 +9,7 @@ abstract class Model extends IlluminateModel
     /**
      * Create a new Eloquent query builder for the model.
      *
-     * @param  \Illuminate\Database\Query\Builder $query
+     * @param \Illuminate\Database\Query\Builder $query
      * 
      * @return \oyvoy\Support\CrossDatabase\Eloquent\Builder|static
      */

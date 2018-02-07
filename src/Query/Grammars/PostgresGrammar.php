@@ -10,8 +10,8 @@ class PostgresGrammar extends IlluminatePostgresGrammar
     /**
      * Compile the "from" portion of the query.
      *
-     * @param  \Illuminate\Database\Query\Builder $query
-     * @param  string                             $table
+     * @param \Illuminate\Database\Query\Builder $query
+     * @param string                             $table
      * 
      * @return string
      */

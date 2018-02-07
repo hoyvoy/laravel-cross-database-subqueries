@@ -2,9 +2,9 @@
 
 namespace Hoyvoy\Tests\Integration;
 
-use Hoyvoy\Tests\TestCase;
 use Illuminate\Database\Capsule\Manager as DB;
 use Hoyvoy\CrossDatabase\Eloquent\Model as Model;
+use Hoyvoy\Tests\TestCase;
 
 class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
 {
