@@ -10,5 +10,6 @@ class Builder extends IlluminateEloquentBuilder
 {
     use IlluminateEloquentQueriesRelationships, CrossDatabaseQueriesRelationships {
         CrossDatabaseQueriesRelationships::addHasWhere insteadof IlluminateEloquentQueriesRelationships;
+        CrossDatabaseQueriesRelationships::withCount insteadof IlluminateEloquentQueriesRelationships;
     }
 }
