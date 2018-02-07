@@ -23,7 +23,7 @@ class MySqlGrammar extends IlluminateMySqlGrammar
 
             return 'from '.$this->wrap($database).'.'.$this->wrapTable($table);
         }
-        
+
         return 'from '.$this->wrapTable($table);
     }
 }
