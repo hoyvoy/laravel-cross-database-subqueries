@@ -10,8 +10,9 @@ class MySqlGrammar extends IlluminateMySqlGrammar
     /**
      * Compile the "from" portion of the query.
      *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  string  $table
+     * @param  \Illuminate\Database\Query\Builder $query
+     * @param  string                             $table
+     * 
      * @return string
      */
     protected function compileFrom(Builder $query, $table)

@@ -10,8 +10,9 @@ class SqlServerGrammar extends IlluminateSqlServerGrammar
     /**
      * Compile the "from" portion of the query.
      *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  string  $table
+     * @param  \Illuminate\Database\Query\Builder $query
+     * @param  string                             $table
+     * 
      * @return string
      */
     protected function compileFrom(Builder $query, $table)
@@ -27,7 +28,7 @@ class SqlServerGrammar extends IlluminateSqlServerGrammar
             return $from.' '.$query->lock;
         }
 
-        if (! is_null($query->lock)) {
+        if (!is_null($query->lock)) {
             return $from.' with(rowlock,'.($query->lock ? 'updlock,' : '').'holdlock)';
         }
 

@@ -3,20 +3,21 @@
 namespace Hoyvoy\CrossDatabase\Eloquent\Concerns;
 
 use Closure;
+use Hoyvoy\CrossDatabase\CanCrossDatabaseShazaamInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Hoyvoy\CrossDatabase\CanCrossDatabaseShazaamInterface;
 
 trait QueriesRelationships
 {
     /**
      * Add the "has" condition where clause to the query.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $hasQuery
-     * @param  \Illuminate\Database\Eloquent\Relations\Relation  $relation
-     * @param  string  $operator
-     * @param  int  $count
-     * @param  string  $boolean
+     * @param  \Illuminate\Database\Eloquent\Builder            $hasQuery
+     * @param  \Illuminate\Database\Eloquent\Relations\Relation $relation
+     * @param  string                                           $operator
+     * @param  int                                              $count
+     * @param  string                                           $boolean
+     * 
      * @return \Illuminate\Database\Eloquent\Builder|static
      */
     protected function addHasWhere(Builder $hasQuery, Relation $relation, $operator, $count, $boolean)

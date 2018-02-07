@@ -2,10 +2,10 @@
 
 namespace Hoyvoy\CrossDatabase\Connectors;
 
-use Illuminate\Database\Connection;
 use Hoyvoy\CrossDatabase\MySqlConnection;
 use Hoyvoy\CrossDatabase\PostgresConnection;
 use Hoyvoy\CrossDatabase\SqlServerConnection;
+use Illuminate\Database\Connection;
 use Illuminate\Database\Connectors\ConnectionFactory as IlluminateConnectionFactory;
 use PDO;
 
