@@ -25,10 +25,22 @@ trait QueriesRelationships
         // If connection implements CanCrossDatabaseShazaamInterface we must attach database
         // connection name in from to be used by grammar when query compiled
         if ($this->getConnection() instanceof CanCrossDatabaseShazaamInterface) {
-            $subqueryConnection = $hasQuery->getConnection()->getDatabaseName();
-            $queryConnection = $this->getConnection()->getDatabaseName();
-            if ($queryConnection != $subqueryConnection) {
-                $queryFrom = $hasQuery->getQuery()->from.'<-->'.$subqueryConnection;
+            $queryConnection = $this->getConnection();
+            $hasQueryConnection = $hasQuery->getConnection();
+
+            $queryConnectionName = $queryConnection->getDatabaseName();
+            $hasQueryConnectionName = $hasQueryConnection->getDatabaseName();
+            if ($queryConnectionName != $hasQueryConnectionName) {
+                
+                $queryFrom = '';
+                $hasQueryConnectionPrefix = $hasQueryConnection->getTablePrefix();
+                $hasQueryQueryFrom = $hasQuery->getQuery()->from;
+
+                if(isset($hasQueryConnectionPrefix)){
+                    $queryFrom = $hasQueryConnectionPrefix . $hasQueryQueryFrom . ' as ';
+                }
+
+                $queryFrom .= $hasQueryQueryFrom . '<-->' . $subqueryConnection;
                 $hasQuery->from($queryFrom);
             }
         }
