@@ -20,8 +20,9 @@ class SqlServerGrammar extends IlluminateSqlServerGrammar
         $from = 'from '.$this->wrapTable($table);
         // Check for cross database query to attach database name
         if (strpos($table, '<-->') !== false) {
-            list($table, $database) = explode('<-->', $table);
-            $from = 'from '.$this->wrap($database).'.'.$this->wrap($table, true);
+            list($prefix, $table, $database) = explode('<-->', $table);
+            $tablePrefixed = $this->wrap($prefix.$table, true);
+            $from = 'from '.$this->wrap($database).'.'.$tablePrefixed.' as '.$this->wrap($table);
         }
 
         if (is_string($query->lock)) {

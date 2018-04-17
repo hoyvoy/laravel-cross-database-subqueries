@@ -42,7 +42,7 @@ class TestCase extends BaseTestCase
                 'unix_socket' => '',
                 'charset'     => 'utf8mb4',
                 'collation'   => 'utf8mb4_unicode_ci',
-                'prefix'      => $this->tablesPrefix,
+                'prefix'      => '',
                 'strict'      => true,
                 'engine'      => null,
             ],
@@ -68,7 +68,7 @@ class TestCase extends BaseTestCase
                 'username' => 'test',
                 'password' => 'test',
                 'charset'  => 'utf8',
-                'prefix'   => $this->tablesPrefix,
+                'prefix'   => '',
                 'schema'   => 'public',
                 'sslmode'  => 'prefer',
             ],
@@ -92,7 +92,7 @@ class TestCase extends BaseTestCase
                 'username' => 'test',
                 'password' => 'test',
                 'charset'  => 'utf8',
-                'prefix'   => $this->tablesPrefix,
+                'prefix'   => '',
             ],
             'sqlsrv2' => [
                 'driver'   => 'sqlsrv',
@@ -107,7 +107,7 @@ class TestCase extends BaseTestCase
             'sqlite1' => [
                 'driver'    => 'sqlite',
                 'database'  => __DIR__.'/database/sqlite1.sqlite',
-                'prefix'    => $this->tablesPrefix,
+                'prefix'    => '',
             ],
             'sqlite2' => [
                 'driver'    => 'sqlite',

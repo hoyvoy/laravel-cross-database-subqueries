@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1523947345">
-  <project timestamp="1523947345">
+<coverage generated="1523969714">
+  <project timestamp="1523969714">
     <file name="/Users/mario/Documents/proyectos/laravel-cross-database-subqueries/src/CanCrossDatabaseShazaamInterface.php">
       <metrics loc="7" ncloc="7" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
@@ -14,11 +14,11 @@
         <line num="26" type="stmt" count="0"/>
         <line num="30" type="stmt" count="5"/>
         <line num="31" type="stmt" count="5"/>
-        <line num="32" type="stmt" count="5"/>
-        <line num="33" type="stmt" count="5"/>
-        <line num="34" type="stmt" count="5"/>
-        <line num="35" type="stmt" count="5"/>
-        <line num="38" type="stmt" count="5"/>
+        <line num="32" type="stmt" count="4"/>
+        <line num="33" type="stmt" count="4"/>
+        <line num="34" type="stmt" count="4"/>
+        <line num="35" type="stmt" count="4"/>
+        <line num="38" type="stmt" count="4"/>
         <metrics loc="40" ncloc="31" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="8" elements="10" coveredelements="8"/>
       </file>
     </package>
@@ -55,16 +55,16 @@
         <class name="Hoyvoy\CrossDatabase\PostgresConnection" namespace="Hoyvoy\CrossDatabase">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
-        <line num="15" type="method" name="getDefaultQueryGrammar" visibility="protected" complexity="1" crap="1" count="5"/>
-        <line num="17" type="stmt" count="5"/>
+        <line num="15" type="method" name="getDefaultQueryGrammar" visibility="protected" complexity="1" crap="1" count="4"/>
+        <line num="17" type="stmt" count="4"/>
         <metrics loc="19" ncloc="14" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
       <file name="/Users/mario/Documents/proyectos/laravel-cross-database-subqueries/src/SqlServerConnection.php">
         <class name="Hoyvoy\CrossDatabase\SqlServerConnection" namespace="Hoyvoy\CrossDatabase">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
-        <line num="15" type="method" name="getDefaultQueryGrammar" visibility="protected" complexity="1" crap="1" count="5"/>
-        <line num="17" type="stmt" count="5"/>
+        <line num="15" type="method" name="getDefaultQueryGrammar" visibility="protected" complexity="1" crap="1" count="4"/>
+        <line num="17" type="stmt" count="4"/>
         <metrics loc="19" ncloc="14" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
     </package>
@@ -128,43 +128,46 @@
     <package name="Hoyvoy\CrossDatabase\Query\Grammars">
       <file name="/Users/mario/Documents/proyectos/laravel-cross-database-subqueries/src/Query/Grammars/MySqlGrammar.php">
         <class name="Hoyvoy\CrossDatabase\Query\Grammars\MySqlGrammar" namespace="Hoyvoy\CrossDatabase\Query\Grammars">
-          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
         </class>
         <line num="18" type="method" name="compileFrom" visibility="protected" complexity="2" crap="2" count="5"/>
         <line num="21" type="stmt" count="5"/>
-        <line num="22" type="stmt" count="5"/>
-        <line num="24" type="stmt" count="5"/>
-        <line num="27" type="stmt" count="5"/>
-        <metrics loc="29" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
-      </file>
-      <file name="/Users/mario/Documents/proyectos/laravel-cross-database-subqueries/src/Query/Grammars/PostgresGrammar.php">
-        <class name="Hoyvoy\CrossDatabase\Query\Grammars\PostgresGrammar" namespace="Hoyvoy\CrossDatabase\Query\Grammars">
-          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
-        </class>
-        <line num="18" type="method" name="compileFrom" visibility="protected" complexity="2" crap="2" count="5"/>
-        <line num="21" type="stmt" count="5"/>
-        <line num="22" type="stmt" count="5"/>
-        <line num="24" type="stmt" count="5"/>
-        <line num="27" type="stmt" count="5"/>
-        <metrics loc="29" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
-      </file>
-      <file name="/Users/mario/Documents/proyectos/laravel-cross-database-subqueries/src/Query/Grammars/SqlServerGrammar.php">
-        <class name="Hoyvoy\CrossDatabase\Query\Grammars\SqlServerGrammar" namespace="Hoyvoy\CrossDatabase\Query\Grammars">
-          <metrics complexity="5" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="7" elements="10" coveredelements="7"/>
-        </class>
-        <line num="18" type="method" name="compileFrom" visibility="protected" complexity="5" crap="5.27" count="5"/>
-        <line num="20" type="stmt" count="5"/>
         <line num="22" type="stmt" count="5"/>
         <line num="23" type="stmt" count="5"/>
         <line num="24" type="stmt" count="5"/>
         <line num="27" type="stmt" count="5"/>
-        <line num="28" type="stmt" count="0"/>
-        <line num="31" type="stmt" count="5"/>
-        <line num="32" type="stmt" count="0"/>
-        <line num="35" type="stmt" count="5"/>
-        <metrics loc="37" ncloc="27" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="7" elements="10" coveredelements="7"/>
+        <metrics loc="29" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </file>
+      <file name="/Users/mario/Documents/proyectos/laravel-cross-database-subqueries/src/Query/Grammars/PostgresGrammar.php">
+        <class name="Hoyvoy\CrossDatabase\Query\Grammars\PostgresGrammar" namespace="Hoyvoy\CrossDatabase\Query\Grammars">
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+        </class>
+        <line num="18" type="method" name="compileFrom" visibility="protected" complexity="2" crap="2" count="4"/>
+        <line num="21" type="stmt" count="4"/>
+        <line num="22" type="stmt" count="4"/>
+        <line num="23" type="stmt" count="4"/>
+        <line num="24" type="stmt" count="4"/>
+        <line num="27" type="stmt" count="4"/>
+        <metrics loc="29" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </file>
+      <file name="/Users/mario/Documents/proyectos/laravel-cross-database-subqueries/src/Query/Grammars/SqlServerGrammar.php">
+        <class name="Hoyvoy\CrossDatabase\Query\Grammars\SqlServerGrammar" namespace="Hoyvoy\CrossDatabase\Query\Grammars">
+          <metrics complexity="5" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="8" elements="11" coveredelements="8"/>
+        </class>
+        <line num="18" type="method" name="compileFrom" visibility="protected" complexity="5" crap="5.20" count="4"/>
+        <line num="20" type="stmt" count="4"/>
+        <line num="22" type="stmt" count="4"/>
+        <line num="23" type="stmt" count="4"/>
+        <line num="24" type="stmt" count="4"/>
+        <line num="25" type="stmt" count="4"/>
+        <line num="28" type="stmt" count="4"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="4"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="4"/>
+        <metrics loc="38" ncloc="28" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="8" elements="11" coveredelements="8"/>
       </file>
     </package>
-    <metrics files="13" loc="385" ncloc="268" classes="10" methods="12" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="67" coveredstatements="63" elements="79" coveredelements="72"/>
+    <metrics files="13" loc="386" ncloc="269" classes="10" methods="12" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="70" coveredstatements="66" elements="82" coveredelements="75"/>
   </project>
 </coverage>

@@ -28,7 +28,7 @@ trait QueriesRelationships
             $subqueryConnection = $hasQuery->getConnection()->getDatabaseName();
             $queryConnection = $this->getConnection()->getDatabaseName();
             if ($queryConnection != $subqueryConnection) {
-                $queryFrom = $hasQuery->getConnection()->getTablePrefix().$hasQuery->getQuery()->from.'<-->'.$subqueryConnection;
+                $queryFrom = $hasQuery->getConnection()->getTablePrefix().'<-->'.$hasQuery->getQuery()->from.'<-->'.$subqueryConnection;
                 $hasQuery->from($queryFrom);
             }
         }
@@ -86,7 +86,7 @@ trait QueriesRelationships
                 $subqueryConnection = $query->getConnection()->getDatabaseName();
                 $queryConnection = $this->getConnection()->getDatabaseName();
                 if ($queryConnection != $subqueryConnection) {
-                    $queryFrom = $query->getConnection()->getTablePrefix().$query->getQuery()->from.'<-->'.$subqueryConnection;
+                    $queryFrom = $query->getConnection()->getTablePrefix().'<-->'.$query->getQuery()->from.'<-->'.$subqueryConnection;
                     $query->from($queryFrom);
                 }
             }
