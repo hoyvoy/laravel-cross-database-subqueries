@@ -21,7 +21,7 @@ class PostgresGrammar extends IlluminatePostgresGrammar
         if (strpos($table, '<-->') !== false) {
             list($table, $database) = explode('<-->', $table);
 
-            return 'from '.$this->wrap($database).'.'.$this->wrapTable($table);
+            return 'from '.$this->wrap($database).'.'.$this->wrap($table, true);
         }
 
         return 'from '.$this->wrapTable($table);

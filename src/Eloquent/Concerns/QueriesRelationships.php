@@ -25,22 +25,10 @@ trait QueriesRelationships
         // If connection implements CanCrossDatabaseShazaamInterface we must attach database
         // connection name in from to be used by grammar when query compiled
         if ($this->getConnection() instanceof CanCrossDatabaseShazaamInterface) {
-            $queryConnection = $this->getConnection();
-            $hasQueryConnection = $hasQuery->getConnection();
-
-            $queryConnectionName = $queryConnection->getDatabaseName();
-            $hasQueryConnectionName = $hasQueryConnection->getDatabaseName();
-            if ($queryConnectionName != $hasQueryConnectionName) {
-                
-                $queryFrom = '';
-                $hasQueryConnectionPrefix = $hasQueryConnection->getTablePrefix();
-                $hasQueryQueryFrom = $hasQuery->getQuery()->from;
-
-                if(isset($hasQueryConnectionPrefix)){
-                    $queryFrom = $hasQueryConnectionPrefix . $hasQueryQueryFrom . ' as ';
-                }
-
-                $queryFrom .= $hasQueryQueryFrom . '<-->' . $subqueryConnection;
+            $subqueryConnection = $hasQuery->getConnection()->getDatabaseName();
+            $queryConnection = $this->getConnection()->getDatabaseName();
+            if ($queryConnection != $subqueryConnection) {
+                $queryFrom = $hasQuery->getConnection()->getTablePrefix().$hasQuery->getQuery()->from.'<-->'.$subqueryConnection;
                 $hasQuery->from($queryFrom);
             }
         }
@@ -98,7 +86,7 @@ trait QueriesRelationships
                 $subqueryConnection = $query->getConnection()->getDatabaseName();
                 $queryConnection = $this->getConnection()->getDatabaseName();
                 if ($queryConnection != $subqueryConnection) {
-                    $queryFrom = $query->getQuery()->from.'<-->'.$subqueryConnection;
+                    $queryFrom = $query->getConnection()->getTablePrefix().$query->getQuery()->from.'<-->'.$subqueryConnection;
                     $query->from($queryFrom);
                 }
             }

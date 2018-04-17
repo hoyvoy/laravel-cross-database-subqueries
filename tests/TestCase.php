@@ -6,6 +6,8 @@ use Orchestra\Testbench\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
 {
+    protected $tablesPrefix = 'prefix_';
+
     /**
      * Get package providers.
      *
@@ -40,7 +42,7 @@ class TestCase extends BaseTestCase
                 'unix_socket' => '',
                 'charset'     => 'utf8mb4',
                 'collation'   => 'utf8mb4_unicode_ci',
-                'prefix'      => '',
+                'prefix'      => $this->tablesPrefix,
                 'strict'      => true,
                 'engine'      => null,
             ],
@@ -54,7 +56,7 @@ class TestCase extends BaseTestCase
                 'unix_socket' => '',
                 'charset'     => 'utf8mb4',
                 'collation'   => 'utf8mb4_unicode_ci',
-                'prefix'      => '',
+                'prefix'      => $this->tablesPrefix,
                 'strict'      => true,
                 'engine'      => null,
             ],
@@ -66,7 +68,7 @@ class TestCase extends BaseTestCase
                 'username' => 'test',
                 'password' => 'test',
                 'charset'  => 'utf8',
-                'prefix'   => '',
+                'prefix'   => $this->tablesPrefix,
                 'schema'   => 'public',
                 'sslmode'  => 'prefer',
             ],
@@ -78,7 +80,7 @@ class TestCase extends BaseTestCase
                 'username' => 'test',
                 'password' => 'test',
                 'charset'  => 'utf8',
-                'prefix'   => '',
+                'prefix'   => $this->tablesPrefix,
                 'schema'   => 'public',
                 'sslmode'  => 'prefer',
             ],
@@ -90,7 +92,7 @@ class TestCase extends BaseTestCase
                 'username' => 'test',
                 'password' => 'test',
                 'charset'  => 'utf8',
-                'prefix'   => '',
+                'prefix'   => $this->tablesPrefix,
             ],
             'sqlsrv2' => [
                 'driver'   => 'sqlsrv',
@@ -100,17 +102,17 @@ class TestCase extends BaseTestCase
                 'username' => 'test',
                 'password' => 'test',
                 'charset'  => 'utf8',
-                'prefix'   => '',
+                'prefix'   => $this->tablesPrefix,
             ],
             'sqlite1' => [
                 'driver'    => 'sqlite',
                 'database'  => __DIR__.'/database/sqlite1.sqlite',
-                'prefix'    => '',
+                'prefix'    => $this->tablesPrefix,
             ],
             'sqlite2' => [
                 'driver'    => 'sqlite',
                 'database'  => __DIR__.'/database/sqlite2.sqlite',
-                'prefix'    => '',
+                'prefix'    => $this->tablesPrefix,
             ],
         ]);
     }
