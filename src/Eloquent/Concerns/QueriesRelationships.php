@@ -78,8 +78,6 @@ trait QueriesRelationships
 
             $query->callScope($constraints);
 
-            $query->mergeConstraintsFrom($relation->getQuery());
-
             // If connection implements CanCrossDatabaseShazaamInterface we must attach database
             // connection name in from to be used by grammar when query compiled
             if ($this->getConnection() instanceof CanCrossDatabaseShazaamInterface) {
@@ -91,12 +89,18 @@ trait QueriesRelationships
                 }
             }
 
+            $query = $query->mergeConstraintsFrom($relation->getQuery())->toBase();
+
+            if (count($query->columns) > 1) {
+                $query->columns = [$query->columns[0]];
+            }
+
             // Finally we will add the proper result column alias to the query and run the subselect
             // statement against the query builder. Then we will return the builder instance back
             // to the developer for further constraint chaining that needs to take place on it.
             $column = $alias ?? Str::snake($name.'_count');
 
-            $this->selectSub($query->toBase(), $column);
+            $this->selectSub($query, $column);
         }
 
         return $this;

@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Application Test Suite" tests="5" assertions="33" errors="0" failures="1" skipped="0" time="0.941959">
-    <testsuite name="Hoyvoy\Tests\Integration\DatabaseEloquentSubqueriesCrossDatabaseTest" file="/Users/mario/Documents/proyectos/laravel-cross-database-subqueries/tests/Integration/DatabaseEloquentSubqueriesCrossDatabaseTest.php" tests="5" assertions="33" errors="0" failures="1" skipped="0" time="0.941959">
-      <testcase name="testWhereHasAcrossDatabaseConnection" class="Hoyvoy\Tests\Integration\DatabaseEloquentSubqueriesCrossDatabaseTest" classname="Hoyvoy.Tests.Integration.DatabaseEloquentSubqueriesCrossDatabaseTest" file="/Users/mario/Documents/proyectos/laravel-cross-database-subqueries/tests/Integration/DatabaseEloquentSubqueriesCrossDatabaseTest.php" line="10" assertions="8" time="0.264451"/>
-      <testcase name="testHasAcrossDatabaseConnection" class="Hoyvoy\Tests\Integration\DatabaseEloquentSubqueriesCrossDatabaseTest" classname="Hoyvoy.Tests.Integration.DatabaseEloquentSubqueriesCrossDatabaseTest" file="/Users/mario/Documents/proyectos/laravel-cross-database-subqueries/tests/Integration/DatabaseEloquentSubqueriesCrossDatabaseTest.php" line="61" assertions="8" time="0.185400"/>
-      <testcase name="testDoesntHasAcrossDatabaseConnection" class="Hoyvoy\Tests\Integration\DatabaseEloquentSubqueriesCrossDatabaseTest" classname="Hoyvoy.Tests.Integration.DatabaseEloquentSubqueriesCrossDatabaseTest" file="/Users/mario/Documents/proyectos/laravel-cross-database-subqueries/tests/Integration/DatabaseEloquentSubqueriesCrossDatabaseTest.php" line="96" assertions="8" time="0.184554"/>
-      <testcase name="testWhereDoesntHaveAcrossDatabaseConnection" class="Hoyvoy\Tests\Integration\DatabaseEloquentSubqueriesCrossDatabaseTest" classname="Hoyvoy.Tests.Integration.DatabaseEloquentSubqueriesCrossDatabaseTest" file="/Users/mario/Documents/proyectos/laravel-cross-database-subqueries/tests/Integration/DatabaseEloquentSubqueriesCrossDatabaseTest.php" line="131" assertions="8" time="0.197596"/>
-      <testcase name="testWithCountAcrossDatabaseConnection" class="Hoyvoy\Tests\Integration\DatabaseEloquentSubqueriesCrossDatabaseTest" classname="Hoyvoy.Tests.Integration.DatabaseEloquentSubqueriesCrossDatabaseTest" file="/Users/mario/Documents/proyectos/laravel-cross-database-subqueries/tests/Integration/DatabaseEloquentSubqueriesCrossDatabaseTest.php" line="182" assertions="1" time="0.109958">
-        <failure type="PHPUnit\Framework\ExpectationFailedException">Hoyvoy\Tests\Integration\DatabaseEloquentSubqueriesCrossDatabaseTest::testWithCountAcrossDatabaseConnection
-Failed asserting that two strings are equal.
---- Expected
-+++ Actual
-@@ @@
--'select `users`.*, (select count(*) from `mysql2`.`prefix_orders` as `orders` where `users`.`id` = `orders`.`user_id` and `name` like ?) as `orders_count` from `users`'
-+'select `users`.*, (select count(*) from `mysql2`.`prefix_orders` as `orders` where `prefix_users`.`id` = `prefix_orders`.`user_id` and `name` like ?) as `orders_count` from `users`'
-
-/Users/mario/Documents/proyectos/laravel-cross-database-subqueries/tests/Integration/DatabaseEloquentSubqueriesCrossDatabaseTest.php:189
-</failure>
-      </testcase>
+  <testsuite name="Application Test Suite" tests="5" assertions="40" errors="0" failures="0" skipped="0" time="2.169163">
+    <testsuite name="Hoyvoy\Tests\Integration\DatabaseEloquentSubqueriesCrossDatabaseTest" file="/Users/mario/Documents/webs/laravel-cross-database-subqueries/tests/Integration/DatabaseEloquentSubqueriesCrossDatabaseTest.php" tests="5" assertions="40" errors="0" failures="0" skipped="0" time="2.169163">
+      <testcase name="testWhereHasAcrossDatabaseConnection" class="Hoyvoy\Tests\Integration\DatabaseEloquentSubqueriesCrossDatabaseTest" classname="Hoyvoy.Tests.Integration.DatabaseEloquentSubqueriesCrossDatabaseTest" file="/Users/mario/Documents/webs/laravel-cross-database-subqueries/tests/Integration/DatabaseEloquentSubqueriesCrossDatabaseTest.php" line="10" assertions="8" time="0.505722"/>
+      <testcase name="testHasAcrossDatabaseConnection" class="Hoyvoy\Tests\Integration\DatabaseEloquentSubqueriesCrossDatabaseTest" classname="Hoyvoy.Tests.Integration.DatabaseEloquentSubqueriesCrossDatabaseTest" file="/Users/mario/Documents/webs/laravel-cross-database-subqueries/tests/Integration/DatabaseEloquentSubqueriesCrossDatabaseTest.php" line="61" assertions="8" time="0.355970"/>
+      <testcase name="testDoesntHasAcrossDatabaseConnection" class="Hoyvoy\Tests\Integration\DatabaseEloquentSubqueriesCrossDatabaseTest" classname="Hoyvoy.Tests.Integration.DatabaseEloquentSubqueriesCrossDatabaseTest" file="/Users/mario/Documents/webs/laravel-cross-database-subqueries/tests/Integration/DatabaseEloquentSubqueriesCrossDatabaseTest.php" line="96" assertions="8" time="0.349880"/>
+      <testcase name="testWhereDoesntHaveAcrossDatabaseConnection" class="Hoyvoy\Tests\Integration\DatabaseEloquentSubqueriesCrossDatabaseTest" classname="Hoyvoy.Tests.Integration.DatabaseEloquentSubqueriesCrossDatabaseTest" file="/Users/mario/Documents/webs/laravel-cross-database-subqueries/tests/Integration/DatabaseEloquentSubqueriesCrossDatabaseTest.php" line="131" assertions="8" time="0.504775"/>
+      <testcase name="testWithCountAcrossDatabaseConnection" class="Hoyvoy\Tests\Integration\DatabaseEloquentSubqueriesCrossDatabaseTest" classname="Hoyvoy.Tests.Integration.DatabaseEloquentSubqueriesCrossDatabaseTest" file="/Users/mario/Documents/webs/laravel-cross-database-subqueries/tests/Integration/DatabaseEloquentSubqueriesCrossDatabaseTest.php" line="185" assertions="8" time="0.452816"/>
     </testsuite>
   </testsuite>
 </testsuites>

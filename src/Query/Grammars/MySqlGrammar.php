@@ -20,8 +20,12 @@ class MySqlGrammar extends IlluminateMySqlGrammar
         // Check for cross database query to attach database name
         if (strpos($table, '<-->') !== false) {
             list($prefix, $table, $database) = explode('<-->', $table);
-            $tablePrefixed = $this->wrap($prefix.$table, true);
-            return 'from '.$this->wrap($database).'.'.$tablePrefixed.' as '.$this->wrap($table);
+            $wrappedTable = $this->wrapTable($table, true);
+            $wrappedTablePrefixed = $this->wrap($prefix.$table, true);
+            if ($wrappedTable != $wrappedTablePrefixed) {
+                return 'from '.$this->wrap($database).'.'.$wrappedTablePrefixed.' as '.$wrappedTable;
+            }
+            return 'from '.$this->wrap($database).'.'.$wrappedTablePrefixed;
         }
 
         return 'from '.$this->wrapTable($table);

@@ -60,6 +60,20 @@ class TestCase extends BaseTestCase
                 'strict'      => true,
                 'engine'      => null,
             ],
+            'mysql3' => [
+                'driver'      => 'mysql',
+                'host'        => '127.0.0.1',
+                'port'        => '3306',
+                'database'    => 'mysql3',
+                'username'    => 'test',
+                'password'    => 'test',
+                'unix_socket' => '',
+                'charset'     => 'utf8mb4',
+                'collation'   => 'utf8mb4_unicode_ci',
+                'prefix'      => '',
+                'strict'      => true,
+                'engine'      => null,
+            ],
             'pgsql1' => [
                 'driver'   => 'pgsql',
                 'host'     => '127.0.0.1',
@@ -84,6 +98,18 @@ class TestCase extends BaseTestCase
                 'schema'   => 'public',
                 'sslmode'  => 'prefer',
             ],
+            'pgsql3' => [
+                'driver'   => 'pgsql',
+                'host'     => '127.0.0.1',
+                'port'     => '3306',
+                'database' => 'pgsql3',
+                'username' => 'test',
+                'password' => 'test',
+                'charset'  => 'utf8',
+                'prefix'   => '',
+                'schema'   => 'public',
+                'sslmode'  => 'prefer',
+            ],
             'sqlsrv1' => [
                 'driver'   => 'sqlsrv',
                 'host'     => '127.0.0.1',
@@ -104,6 +130,16 @@ class TestCase extends BaseTestCase
                 'charset'  => 'utf8',
                 'prefix'   => $this->tablesPrefix,
             ],
+            'sqlsrv3' => [
+                'driver'   => 'sqlsrv',
+                'host'     => '127.0.0.1',
+                'port'     => '3306',
+                'database' => 'sqlsrv3',
+                'username' => 'test',
+                'password' => 'test',
+                'charset'  => 'utf8',
+                'prefix'   => '',
+            ],
             'sqlite1' => [
                 'driver'    => 'sqlite',
                 'database'  => __DIR__.'/database/sqlite1.sqlite',
@@ -113,6 +149,11 @@ class TestCase extends BaseTestCase
                 'driver'    => 'sqlite',
                 'database'  => __DIR__.'/database/sqlite2.sqlite',
                 'prefix'    => $this->tablesPrefix,
+            ],
+            'sqlite3' => [
+                'driver'    => 'sqlite',
+                'database'  => __DIR__.'/database/sqlite3.sqlite',
+                'prefix'    => '',
             ],
         ]);
     }
