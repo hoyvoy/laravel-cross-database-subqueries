@@ -25,6 +25,7 @@ class MySqlGrammar extends IlluminateMySqlGrammar
             if ($wrappedTable != $wrappedTablePrefixed) {
                 return 'from '.$this->wrap($database).'.'.$wrappedTablePrefixed.' as '.$wrappedTable;
             }
+
             return 'from '.$this->wrap($database).'.'.$wrappedTablePrefixed;
         }
 

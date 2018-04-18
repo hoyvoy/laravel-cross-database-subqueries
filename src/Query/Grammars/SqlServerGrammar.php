@@ -18,7 +18,7 @@ class SqlServerGrammar extends IlluminateSqlServerGrammar
     protected function compileFrom(Builder $query, $table)
     {
         $from = 'from '.$this->wrapTable($table);
-        
+
         // Check for cross database query to attach database name
         if (strpos($table, '<-->') !== false) {
             list($prefix, $table, $database) = explode('<-->', $table);
