@@ -4,7 +4,7 @@
 Eloquent cross database compatibility in subqueries.
 
 | **Laravel**  |  **laravel5-soft-cascade** |  **Lifecycle** |
-|---|---|
+|---|---|---|
 | ^5.5  | ^5.5  | ^1.8  | January 24, 2017 |
 					    | Bug fixes until January 2019 |
 					    | Security fixes until June 2020 |
