@@ -19,9 +19,14 @@ class PostgresGrammar extends IlluminatePostgresGrammar
     {
         // Check for cross database query to attach database name
         if (strpos($table, '<-->') !== false) {
-            list($table, $database) = explode('<-->', $table);
+            list($prefix, $table, $database) = explode('<-->', $table);
+            $wrappedTable = $this->wrapTable($table, true);
+            $wrappedTablePrefixed = $this->wrap($prefix.$table, true);
+            if ($wrappedTable != $wrappedTablePrefixed) {
+                return 'from '.$this->wrap($database).'.'.$wrappedTablePrefixed.' as '.$wrappedTable;
+            }
 
-            return 'from '.$this->wrap($database).'.'.$this->wrapTable($table);
+            return 'from '.$this->wrap($database).'.'.$wrappedTablePrefixed;
         }
 
         return 'from '.$this->wrapTable($table);

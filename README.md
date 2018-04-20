@@ -3,6 +3,13 @@
 # Laravel Cross database subqueries
 Eloquent cross database compatibility in subqueries.
 
+| **Laravel**  |  **laravel-cross-database-subqueries** |  **Lifecycle** |
+|---|---|---|
+| ^5.5  | ^5.5  | January 24, 2017 |
+||| Bug fixes until January 2019 |
+||| Security fixes until June 2020 |
+
+
 # Why do I need it?
 ### To use the following Eloquent methods cross databases:
 * has

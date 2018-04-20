@@ -28,7 +28,7 @@ trait QueriesRelationships
             $subqueryConnection = $hasQuery->getConnection()->getDatabaseName();
             $queryConnection = $this->getConnection()->getDatabaseName();
             if ($queryConnection != $subqueryConnection) {
-                $queryFrom = $hasQuery->getQuery()->from.'<-->'.$subqueryConnection;
+                $queryFrom = $hasQuery->getConnection()->getTablePrefix().'<-->'.$hasQuery->getQuery()->from.'<-->'.$subqueryConnection;
                 $hasQuery->from($queryFrom);
             }
         }
@@ -78,17 +78,21 @@ trait QueriesRelationships
 
             $query->callScope($constraints);
 
-            $query->mergeConstraintsFrom($relation->getQuery());
-
             // If connection implements CanCrossDatabaseShazaamInterface we must attach database
             // connection name in from to be used by grammar when query compiled
             if ($this->getConnection() instanceof CanCrossDatabaseShazaamInterface) {
                 $subqueryConnection = $query->getConnection()->getDatabaseName();
                 $queryConnection = $this->getConnection()->getDatabaseName();
                 if ($queryConnection != $subqueryConnection) {
-                    $queryFrom = $query->getQuery()->from.'<-->'.$subqueryConnection;
+                    $queryFrom = $query->getConnection()->getTablePrefix().'<-->'.$query->getQuery()->from.'<-->'.$subqueryConnection;
                     $query->from($queryFrom);
                 }
+            }
+
+            $query = $query->mergeConstraintsFrom($relation->getQuery())->toBase();
+
+            if (count($query->columns) > 1) {
+                $query->columns = [$query->columns[0]];
             }
 
             // Finally we will add the proper result column alias to the query and run the subselect
@@ -96,7 +100,7 @@ trait QueriesRelationships
             // to the developer for further constraint chaining that needs to take place on it.
             $column = $alias ?? Str::snake($name.'_count');
 
-            $this->selectSub($query->toBase(), $column);
+            $this->selectSub($query, $column);
         }
 
         return $this;

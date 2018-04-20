@@ -13,7 +13,7 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
         $query = UserMysql::whereHas('orders', function ($query) {
             $query->where('name', 'like', '%a%');
         });
-        $this->assertEquals('select * from `users` where exists (select * from `mysql2`.`orders` where `users`.`id` = `orders`.`user_id` and `name` like ?)', $query->toSql());
+        $this->assertEquals('select * from `users` where exists (select * from `mysql2`.`'.$this->tablesPrefix.'orders` as `orders` where `users`.`id` = `orders`.`user_id` and `name` like ?)', $query->toSql());
 
         // Test MySQL same database subquery
         $query = UserMysql::whereHas('posts', function ($query) {
@@ -25,7 +25,7 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
         $query = UserPgsql::whereHas('orders', function ($query) {
             $query->where('name', 'like', '%a%');
         });
-        $this->assertEquals('select * from "users" where exists (select * from "pgsql2"."orders" where "users"."id" = "orders"."user_id" and "name" like ?)', $query->toSql());
+        $this->assertEquals('select * from "users" where exists (select * from "pgsql2"."'.$this->tablesPrefix.'orders" as "orders" where "users"."id" = "orders"."user_id" and "name" like ?)', $query->toSql());
 
         // Test PostgreSQL same database subquery
         $query = UserPgsql::whereHas('posts', function ($query) {
@@ -37,7 +37,7 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
         $query = UserSqlsrv::whereHas('orders', function ($query) {
             $query->where('name', 'like', '%a%');
         });
-        $this->assertEquals('select * from [users] where exists (select * from [sqlsrv2].[orders] where [users].[id] = [orders].[user_id] and [name] like ?)', $query->toSql());
+        $this->assertEquals('select * from [users] where exists (select * from [sqlsrv2].['.$this->tablesPrefix.'orders] as [orders] where [users].[id] = [orders].[user_id] and [name] like ?)', $query->toSql());
 
         // Test SQL Server same database subquery
         $query = UserSqlsrv::whereHas('posts', function ($query) {
@@ -62,7 +62,7 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
     {
         // Test MySQL cross database subquery
         $query = UserMysql::has('orders');
-        $this->assertEquals('select * from `users` where exists (select * from `mysql2`.`orders` where `users`.`id` = `orders`.`user_id`)', $query->toSql());
+        $this->assertEquals('select * from `users` where exists (select * from `mysql2`.`'.$this->tablesPrefix.'orders` as `orders` where `users`.`id` = `orders`.`user_id`)', $query->toSql());
 
         // Test MySQL same database subquery
         $query = UserMysql::has('posts');
@@ -70,7 +70,7 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
 
         // Test PostgreSQL cross database subquery
         $query = UserPgsql::has('orders');
-        $this->assertEquals('select * from "users" where exists (select * from "pgsql2"."orders" where "users"."id" = "orders"."user_id")', $query->toSql());
+        $this->assertEquals('select * from "users" where exists (select * from "pgsql2"."'.$this->tablesPrefix.'orders" as "orders" where "users"."id" = "orders"."user_id")', $query->toSql());
 
         // Test PostgreSQL same database subquery
         $query = UserPgsql::has('posts');
@@ -78,7 +78,7 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
 
         // Test SQL Server cross database subquery
         $query = UserSqlsrv::has('orders');
-        $this->assertEquals('select * from [users] where exists (select * from [sqlsrv2].[orders] where [users].[id] = [orders].[user_id])', $query->toSql());
+        $this->assertEquals('select * from [users] where exists (select * from [sqlsrv2].['.$this->tablesPrefix.'orders] as [orders] where [users].[id] = [orders].[user_id])', $query->toSql());
 
         // Test SQL Server same database subquery
         $query = UserSqlsrv::has('posts');
@@ -97,7 +97,7 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
     {
         // Test MySQL cross database subquery
         $query = UserMysql::doesntHave('orders');
-        $this->assertEquals('select * from `users` where not exists (select * from `mysql2`.`orders` where `users`.`id` = `orders`.`user_id`)', $query->toSql());
+        $this->assertEquals('select * from `users` where not exists (select * from `mysql2`.`'.$this->tablesPrefix.'orders` as `orders` where `users`.`id` = `orders`.`user_id`)', $query->toSql());
 
         // Test MySQL same database subquery
         $query = UserMysql::doesntHave('posts');
@@ -105,7 +105,7 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
 
         // Test PostgreSQL cross database subquery
         $query = UserPgsql::doesntHave('orders');
-        $this->assertEquals('select * from "users" where not exists (select * from "pgsql2"."orders" where "users"."id" = "orders"."user_id")', $query->toSql());
+        $this->assertEquals('select * from "users" where not exists (select * from "pgsql2"."'.$this->tablesPrefix.'orders" as "orders" where "users"."id" = "orders"."user_id")', $query->toSql());
 
         // Test PostgreSQL same database subquery
         $query = UserPgsql::doesntHave('posts');
@@ -113,7 +113,7 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
 
         // Test SQL Server cross database subquery
         $query = UserSqlsrv::doesntHave('orders');
-        $this->assertEquals('select * from [users] where not exists (select * from [sqlsrv2].[orders] where [users].[id] = [orders].[user_id])', $query->toSql());
+        $this->assertEquals('select * from [users] where not exists (select * from [sqlsrv2].['.$this->tablesPrefix.'orders] as [orders] where [users].[id] = [orders].[user_id])', $query->toSql());
 
         // Test SQL Server same database subquery
         $query = UserSqlsrv::doesntHave('posts');
@@ -134,7 +134,7 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
         $query = UserMysql::whereDoesntHave('orders', function ($query) {
             $query->where('name', 'like', '%a%');
         });
-        $this->assertEquals('select * from `users` where not exists (select * from `mysql2`.`orders` where `users`.`id` = `orders`.`user_id` and `name` like ?)', $query->toSql());
+        $this->assertEquals('select * from `users` where not exists (select * from `mysql2`.`'.$this->tablesPrefix.'orders` as `orders` where `users`.`id` = `orders`.`user_id` and `name` like ?)', $query->toSql());
 
         // Test MySQL same database subquery
         $query = UserMysql::whereDoesntHave('posts', function ($query) {
@@ -146,7 +146,7 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
         $query = UserPgsql::whereDoesntHave('orders', function ($query) {
             $query->where('name', 'like', '%a%');
         });
-        $this->assertEquals('select * from "users" where not exists (select * from "pgsql2"."orders" where "users"."id" = "orders"."user_id" and "name" like ?)', $query->toSql());
+        $this->assertEquals('select * from "users" where not exists (select * from "pgsql2"."'.$this->tablesPrefix.'orders" as "orders" where "users"."id" = "orders"."user_id" and "name" like ?)', $query->toSql());
 
         // Test PostgreSQL same database subquery
         $query = UserPgsql::whereDoesntHave('posts', function ($query) {
@@ -158,7 +158,7 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
         $query = UserSqlsrv::whereDoesntHave('orders', function ($query) {
             $query->where('name', 'like', '%a%');
         });
-        $this->assertEquals('select * from [users] where not exists (select * from [sqlsrv2].[orders] where [users].[id] = [orders].[user_id] and [name] like ?)', $query->toSql());
+        $this->assertEquals('select * from [users] where not exists (select * from [sqlsrv2].['.$this->tablesPrefix.'orders] as [orders] where [users].[id] = [orders].[user_id] and [name] like ?)', $query->toSql());
 
         // Test SQL Server same database subquery
         $query = UserSqlsrv::whereDoesntHave('posts', function ($query) {
@@ -179,14 +179,17 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
         $this->assertEquals('select * from "users" where not exists (select * from "posts" where "users"."id" = "posts"."user_id" and "name" like ?)', $query->toSql());
     }
 
+    /**
+     * @todo support prefixes
+     */
     public function testWithCountAcrossDatabaseConnection()
     {
-        // Test MySQL cross database subquery
-        $query = UserMysql::withCount(['orders' => function ($query) {
+        // Test MySQL cross database subquery ()
+        $query = UserMysql::withCount(['ordersWithoutPrefix' => function ($query) {
             $query->where('name', 'like', '%a%');
         },
         ]);
-        $this->assertEquals('select `users`.*, (select count(*) from `mysql2`.`orders` where `users`.`id` = `orders`.`user_id` and `name` like ?) as `orders_count` from `users`', $query->toSql());
+        $this->assertEquals('select `users`.*, (select count(*) from `mysql3`.`orders` where `users`.`id` = `orders`.`user_id` and `name` like ?) as `orders_without_prefix_count` from `users`', $query->toSql());
 
         // Test MySQL same database subquery
         $query = UserMysql::withCount(['posts' => function ($query) {
@@ -196,11 +199,11 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
         $this->assertEquals('select `users`.*, (select count(*) from `posts` where `users`.`id` = `posts`.`user_id` and `name` like ?) as `posts_count` from `users`', $query->toSql());
 
         // Test PostgreSQL cross database subquery
-        $query = UserPgsql::withCount(['orders' => function ($query) {
+        $query = UserPgsql::withCount(['ordersWithoutPrefix' => function ($query) {
             $query->where('name', 'like', '%a%');
         },
         ]);
-        $this->assertEquals('select "users".*, (select count(*) from "pgsql2"."orders" where "users"."id" = "orders"."user_id" and "name" like ?) as "orders_count" from "users"', $query->toSql());
+        $this->assertEquals('select "users".*, (select count(*) from "pgsql3"."orders" where "users"."id" = "orders"."user_id" and "name" like ?) as "orders_without_prefix_count" from "users"', $query->toSql());
 
         // Test PostgreSQL same database subquery
         $query = UserPgsql::withCount(['posts' => function ($query) {
@@ -210,11 +213,11 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
         $this->assertEquals('select "users".*, (select count(*) from "posts" where "users"."id" = "posts"."user_id" and "name" like ?) as "posts_count" from "users"', $query->toSql());
 
         // Test SQL Server cross database subquery
-        $query = UserSqlsrv::withCount(['orders' => function ($query) {
+        $query = UserSqlsrv::withCount(['ordersWithoutPrefix' => function ($query) {
             $query->where('name', 'like', '%a%');
         },
         ]);
-        $this->assertEquals('select [users].*, (select count(*) from [sqlsrv2].[orders] where [users].[id] = [orders].[user_id] and [name] like ?) as [orders_count] from [users]', $query->toSql());
+        $this->assertEquals('select [users].*, (select count(*) from [sqlsrv3].[orders] where [users].[id] = [orders].[user_id] and [name] like ?) as [orders_without_prefix_count] from [users]', $query->toSql());
 
         // Test SQL Server same database subquery
         $query = UserSqlsrv::withCount(['posts' => function ($query) {
@@ -224,11 +227,11 @@ class DatabaseEloquentSubqueriesCrossDatabaseTest extends TestCase
         $this->assertEquals('select [users].*, (select count(*) from [posts] where [users].[id] = [posts].[user_id] and [name] like ?) as [posts_count] from [users]', $query->toSql());
 
         // Test SQL Server cross database subquery
-        $query = UserSqlite::withCount(['orders' => function ($query) {
+        $query = UserSqlite::withCount(['ordersWithoutPrefix' => function ($query) {
             $query->where('name', 'like', '%a%');
         },
         ]);
-        $this->assertEquals('select "users".*, (select count(*) from "orders" where "users"."id" = "orders"."user_id" and "name" like ?) as "orders_count" from "users"', $query->toSql());
+        $this->assertEquals('select "users".*, (select count(*) from "orders" where "users"."id" = "orders"."user_id" and "name" like ?) as "orders_without_prefix_count" from "users"', $query->toSql());
 
         // Test SQL Server same database subquery
         $query = UserSqlite::withCount(['posts' => function ($query) {
@@ -250,6 +253,11 @@ class UserMysql extends Model
         return $this->hasMany('Hoyvoy\Tests\Integration\OrderMysql', 'user_id');
     }
 
+    public function ordersWithoutPrefix()
+    {
+        return $this->hasMany('Hoyvoy\Tests\Integration\OrderWithoutPrefixMysql', 'user_id');
+    }
+
     public function posts()
     {
         return $this->hasMany('Hoyvoy\Tests\Integration\PostMysql', 'user_id');
@@ -260,6 +268,18 @@ class PostMysql extends Model
 {
     protected $connection = 'mysql1';
     protected $table = 'posts';
+    protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo('Hoyvoy\Tests\Integration\UserMysql', 'user_id');
+    }
+}
+
+class OrderWithoutPrefixMysql extends Model
+{
+    protected $connection = 'mysql3';
+    protected $table = 'orders';
     protected $guarded = [];
 
     public function user()
@@ -291,6 +311,11 @@ class UserPgsql extends Model
         return $this->hasMany('Hoyvoy\Tests\Integration\OrderPgsql', 'user_id');
     }
 
+    public function ordersWithoutPrefix()
+    {
+        return $this->hasMany('Hoyvoy\Tests\Integration\OrderWithoutPrefixPgsql', 'user_id');
+    }
+
     public function posts()
     {
         return $this->hasMany('Hoyvoy\Tests\Integration\PostPgsql', 'user_id');
@@ -306,6 +331,18 @@ class PostPgsql extends Model
     public function user()
     {
         return $this->belongsTo('Hoyvoy\Tests\Integration\UserPgsql', 'user_id');
+    }
+}
+
+class OrderWithoutPrefixPgsql extends Model
+{
+    protected $connection = 'pgsql3';
+    protected $table = 'orders';
+    protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo('Hoyvoy\Tests\Integration\UserMysql', 'user_id');
     }
 }
 
@@ -332,6 +369,11 @@ class UserSqlsrv extends Model
         return $this->hasMany('Hoyvoy\Tests\Integration\OrderSqlsrv', 'user_id');
     }
 
+    public function ordersWithoutPrefix()
+    {
+        return $this->hasMany('Hoyvoy\Tests\Integration\OrderWithoutPrefixSqlsrv', 'user_id');
+    }
+
     public function posts()
     {
         return $this->hasMany('Hoyvoy\Tests\Integration\PostSqlsrv', 'user_id');
@@ -347,6 +389,18 @@ class PostSqlsrv extends Model
     public function user()
     {
         return $this->belongsTo('Hoyvoy\Tests\Integration\UserSqlsrv', 'user_id');
+    }
+}
+
+class OrderWithoutPrefixSqlsrv extends Model
+{
+    protected $connection = 'sqlsrv3';
+    protected $table = 'orders';
+    protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo('Hoyvoy\Tests\Integration\UserMysql', 'user_id');
     }
 }
 
@@ -373,6 +427,11 @@ class UserSqlite extends Model
         return $this->hasMany('Hoyvoy\Tests\Integration\OrderSqlite', 'user_id');
     }
 
+    public function ordersWithoutPrefix()
+    {
+        return $this->hasMany('Hoyvoy\Tests\Integration\OrderWithoutPrefixSqlite', 'user_id');
+    }
+
     public function posts()
     {
         return $this->hasMany('Hoyvoy\Tests\Integration\PostSqlite', 'user_id');
@@ -388,6 +447,18 @@ class PostSqlite extends Model
     public function user()
     {
         return $this->belongsTo('Hoyvoy\Tests\Integration\UserSqlite', 'user_id');
+    }
+}
+
+class OrderWithoutPrefixSqlite extends Model
+{
+    protected $connection = 'sqlite3';
+    protected $table = 'orders';
+    protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo('Hoyvoy\Tests\Integration\UserMysql', 'user_id');
     }
 }
 
