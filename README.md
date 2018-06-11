@@ -18,7 +18,7 @@ Eloquent cross database compatibility in subqueries.
 * whereHas
 * doesntHave 
 * whereDoesntHave
-* withCount (except using prefixes)
+* withCount (except with prefixes)
 
 # Installation
 Install with composer
