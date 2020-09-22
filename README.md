@@ -11,6 +11,7 @@ Eloquent cross database compatibility in subqueries.
 | ^5.6  | ^5.6  | February 7, 2018 |
 ||| 6 months of bug fixes |
 ||| 1 year of security |
+| ^8.0  | ^8.0  | September 22, 2020 |
 
 # Why do I need it?
 ### To use the following Eloquent methods cross databases:
